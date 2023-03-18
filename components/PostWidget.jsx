@@ -9,13 +9,14 @@ const PostWidget = ({ categories, slug }) => {
 
   useEffect(() => {
     if (slug) {
-      getSimilarPosts(category, slug).then((result) => setRelatedPosts(result))
+      getSimilarPosts(categories, slug).then((result) =>
+        setRelatedPosts(result)
+      )
     } else {
       getRecentPosts().then((result) => setRelatedPosts(result))
     }
   }, [slug])
 
-  console.log(relatedPosts)
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 mb-8">
       <h3 className="text-xl mb-8 font-semibold border-b pb-4">
@@ -29,7 +30,7 @@ const PostWidget = ({ categories, slug }) => {
               height="60px"
               width="60px"
               className="align-middle rounded-full"
-              src={post.featuredimage.url}
+              src={post.featuredImage.url}
             />
           </div>
           <div className="flex-grow ml-4">
